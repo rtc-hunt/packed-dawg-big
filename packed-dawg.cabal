@@ -18,7 +18,7 @@ Source-Repository head
     Location: https://github.com/AndrasKovacs/dawg
 
 library
-  exposed-modules:      Data.DAWG.Packed      
+  exposed-modules:      Data.DAWG.Packed, Data.DAWG.Packed64
   build-depends:        base >= 4.6.0 && <= 4.9,
                         binary >= 0.7.0,
                         deepseq>=1.3,
