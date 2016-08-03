@@ -11,9 +11,9 @@ A DAWG node is stored in four bytes, using 22 bits for indexing and 8 bits for d
 
 -}
 
-{-# LANGUAGE BangPatterns, PatternGuards, LambdaCase, TupleSections, RecordWildCards #-}
+{-# LANGUAGE BangPatterns, PatternGuards, LambdaCase, TupleSections, RecordWildCards, Trustworthy #-}
 
-module Data.DAWG.Packed (
+module Data.DAWG.Packed64 (
 
     -- * Types
       Node
@@ -36,6 +36,7 @@ module Data.DAWG.Packed (
     -- * Conversions
     , toList
     , toFile
+    , mapFile
 
     -- * Internal
     , pack
@@ -47,7 +48,8 @@ module Data.DAWG.Packed (
     , getNodeAt
     ) where
 
-import qualified Data.Vector.Unboxed as V
+import qualified Data.Vector.Storable as V
+import Data.Vector.Storable.MMap
 
 
 import qualified Data.HashMap.Strict as HM
@@ -212,6 +214,9 @@ mkTrie = foldl' (flip insert) (TrieNode False '\0' [])
 fromFile :: FilePath -> IO Node
 fromFile = decodeFile
 
+mapFile file = do
+	vec <- unsafeMMapVector file Nothing
+	return $ unpack (V.unsafeLast vec) vec
 
 -- | Serialize a DAWG. 
 toFile :: FilePath -> Node -> IO ()
