@@ -1,6 +1,6 @@
 
 
-name:                packed-dawg
+name:                packed-dawg-big
 version:             0.2.0.8
 synopsis:            Generation and traversal of highly compressed directed acyclic word graphs. 
 description:         Generation and traversal of highly compressed directed acyclic word graphs.
@@ -18,8 +18,8 @@ Source-Repository head
     Location: https://github.com/AndrasKovacs/dawg
 
 library
-  exposed-modules:      Data.DAWG.Packed, Data.DAWG.Packed64
-  build-depends:        base >= 4.6.0 && <= 4.9,
+  exposed-modules:      Data.DAWG.Packed64
+  build-depends:        base >= 4.6.0 && <= 5.9,
                         binary >= 0.7.0,
                         deepseq>=1.3,
                         mtl >=2.1,
@@ -32,7 +32,7 @@ test-suite test
   main-is:            Tests.hs
   type:               exitcode-stdio-1.0
 
-  build-depends:      base >= 4.6.0 && <= 4.9, vector >= 0.10.0, mtl >=2.1, 
+  build-depends:      base >= 4.6.0 && <= 5.9, vector >= 0.10.0, mtl >=2.1, 
                       vector-binary-instances >= 0.2.1.0, binary >= 0.7.0, 
                       deepseq>=1.3, unordered-containers >= 0.2,
                       QuickCheck >= 2.5, HUnit >= 1.2, tasty >= 0.3, 
@@ -42,7 +42,7 @@ test-suite test
 
 benchmark bench-dawg-gen
     main-is:            Benchmarks.hs
-    Build-depends:      base >= 4.6.0 && <= 4.9, vector >= 0.10.0, mtl >=2.1, 
+    Build-depends:      base >= 4.6.0 && <= 5.9, vector >= 0.10.0, mtl >=2.1, 
                         vector-binary-instances >= 0.2.1.0, binary >= 0.7.0, 
                         deepseq >= 1.3, unordered-containers >= 0.2,
                         criterion >= 1.0
