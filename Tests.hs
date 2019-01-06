@@ -1,5 +1,5 @@
 
-import qualified Data.DAWG.Packed as D
+import qualified Data.DAWG.Packed64 as D
 import Paths_packed_dawg
 import Data.List
 import Data.Maybe
